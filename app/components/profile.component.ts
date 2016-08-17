@@ -8,12 +8,16 @@ import 'rxjs/add/operator/map';
     templateUrl: 'profile.component.html'
 })
 export class ProfileComponent implements OnInit {
-    user[];
+    user: any[];
+    repos: any[];
 
     constructor(private _githubService: GithubService) {
         this._githubService.getUser().subscribe(user => {
             this.user = user;
-            console.log(user);
+        })
+
+        this._githubService.getRepos().subscribe(repos => {
+            this.repos = repos;
         })
      }
 
